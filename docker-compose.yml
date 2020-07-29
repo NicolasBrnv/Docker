@@ -1,0 +1,30 @@
+version: "3"
+services:
+  mywebapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+        - "127.0.0.1:80:80"
+
+    links:
+      - db:db
+
+    restart: always
+
+  db:
+    image: mysql:8
+    volumes:
+      - ~/mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+
+  myadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    links:
+      - db:db
