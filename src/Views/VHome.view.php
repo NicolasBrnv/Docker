@@ -11,7 +11,7 @@ class VHome
         // TODO: Implement __destruct() method.
     }
 
-    public function acceuil()
+    public function showAcceuil()
     {
         echo 'Page d\'accueil';
     }

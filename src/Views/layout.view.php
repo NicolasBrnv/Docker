@@ -13,8 +13,8 @@ $vcontent = new $content['class']();
 <body>
 <header>
     <a href="index.php?ex=home">Accueil</a>
-    <a href="index.php?ex=rss">Flux RSS</a>
-    <a href="index.php?ex=comics_list">Comics</a>
+    <a href="index.php?ex=data-1">Data 1</a>
+    <a href="index.php?ex=data-2">Data 2</a>
 </header>
 
 <div id="content">

@@ -38,6 +38,14 @@ class Controller
                 $this->home();
                 break;
 
+            case 'data-1' :
+                $this->data1();
+                break;
+
+            case 'data-2' :
+                $this->data2();
+                break;
+
             default     :
                 $this->home();
         }
@@ -51,7 +59,27 @@ class Controller
 
         $content['title'] = 'Accueil';
         $content['class'] = 'VHome';
-        $content['method'] = 'acceuil';
+        $content['method'] = 'showAcceuil';
         $content['arg'] = '';
+    }
+
+    public function data1()
+    {
+        global $content;
+
+        $content['title'] = 'Datas';
+        $content['class'] = 'VDatas';
+        $content['method'] = 'showDatas';
+        $content['arg'] = '1';
+    }
+
+    public function data2()
+    {
+        global $content;
+
+        $content['title'] = 'Datas';
+        $content['class'] = 'VDatas';
+        $content['method'] = 'showDatas';
+        $content['arg'] = '2';
     }
 }
