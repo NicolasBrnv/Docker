@@ -14,6 +14,8 @@ class VDatas
 
     public function showDatas($_dataId){
 
-        echo "<h3>Page de données $_dataId</h3>";
+        echo $_dataId;
+
+        var_dump($_dataId);
     }
 }
