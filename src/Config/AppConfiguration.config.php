@@ -33,32 +33,4 @@ class AppConfiguration
         });
     }
 
-    public function SetPaths($_dirName = null, $_fileName = null)
-    {
-        if (!$_dirName)
-        {
-            $this->pathDir = './Nouveau Dossier';
-            $this->pathFile = $this->pathDir  . '/Nouveau Document.txt';
-        } else
-        {
-            $this->pathDir = './' . $_dirName . '/';
-            $this->pathFile = $this->pathDir  . $_fileName . '.txt';
-        }
-    }
-
-    public function CreateDir()
-    {
-        if (!is_dir($this->pathDir))
-        {
-            mkdir($this->pathDir, 777);
-        }
-    }
-
-    public function CreateFile()
-    {
-        if (!is_file($this->pathFile))
-        {
-            fopen($this->pathFile, 'w');
-        }
-    }
 }

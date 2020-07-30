@@ -6,4 +6,3 @@ $controller = new Controller();
 $controller->setEx();
 $controller->getEx();
 $controller->control();
-
