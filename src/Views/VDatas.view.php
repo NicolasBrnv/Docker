@@ -16,5 +16,7 @@ class VDatas
 
         echo $_dataId;
 
+        var_dump($_dataId);
+
     }
 }

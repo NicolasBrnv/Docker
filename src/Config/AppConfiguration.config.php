@@ -2,9 +2,6 @@
 
 class AppConfiguration
 {
-    private $pathDir;
-    private $pathFile;
-    public static $static = 'AppConfiguration.config.php';
 
     public function __construct()
     {
@@ -22,6 +19,9 @@ class AppConfiguration
             switch ($class[0])
             {
                 case 'C' : include_once 'Controllers/'. $class . '.cont.php';
+                break;
+
+                case 'I' : include_once 'Controllers/Interfaces/'. $class . '.int.php';
                 break;
 
                 case 'M' : include_once 'Models/'. $class . '.model.php';

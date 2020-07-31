@@ -14,5 +14,8 @@ class VHome
     public function showAcceuil()
     {
         echo 'Page d\'accueil';
+
+        phpinfo();
     }
+
 }

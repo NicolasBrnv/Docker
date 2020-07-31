@@ -1,10 +1,14 @@
 <?php
 
 
-class Controller
+class Controller implements IAppDatas
 {
     private $ex;
     private $layout;
+    /**
+     * @var mixed|string
+     */
+    private $post;
 
     public function __construct()
     {
@@ -15,15 +19,33 @@ class Controller
         // TODO: Implement __destruct() method.
     }
 
-    public function setEx()
+    /**
+     * @param IAppDatas $appGet
+     * @return mixed
+     */
+    public function getDatasGet()
     {
-        $this->ex = isset($_GET['ex']) ? $_GET['ex'] : 'home';
+        return $this->ex = isset($_GET['ex']) ? $_GET['ex'] : 'home';
     }
 
-    public function getEx()
+    /**
+     * @param IAppDatas $appPost
+     * @return mixed
+     */
+    public function getDatasPost()
     {
-        return $this->ex;
+        return $this->post;
     }
+
+//    public function setEx()
+//    {
+//        $this->ex = isset($_GET['ex']) ? $_GET['ex'] : 'home';
+//    }
+//
+//    public function getEx()
+//    {
+//        return $this->ex;
+//    }
 
     public function getLayout()
     {
@@ -33,7 +55,8 @@ class Controller
 
     public function control()
     {
-        switch ($this->getEx()) {
+        switch ($this->getDatasGet()) {
+
             case 'home' :
                 $this->home();
                 break;
@@ -82,4 +105,6 @@ class Controller
         $content['method'] = 'showDatas';
         $content['arg'] = '2';
     }
+
+
 }
