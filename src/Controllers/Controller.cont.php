@@ -20,7 +20,6 @@ class Controller implements IAppDatas
     }
 
     /**
-     * @param IAppDatas $appGet
      * @return mixed
      */
     public function getDatasGet()
@@ -29,7 +28,6 @@ class Controller implements IAppDatas
     }
 
     /**
-     * @param IAppDatas $appPost
      * @return mixed
      */
     public function getDatasPost()
