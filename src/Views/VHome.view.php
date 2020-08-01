@@ -15,7 +15,20 @@ class VHome
     {
         echo 'Page d\'accueil';
 
-        phpinfo();
+        try {
+            $dsn = 'mysql:host=db;dbname=test';
+            $username = 'root';
+            $password = 'root';
+
+            $dbh = new PDO($dsn, $username, $password);
+
+            echo "<h3>La connexion a été établi !</h3>";
+
+            phpinfo();
+        } catch (PDOException $e) {
+            print " Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
     }
 
 }
