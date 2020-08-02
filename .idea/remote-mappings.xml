@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="php@2a70bc1f-b112-4c0f-88c0-4f0c4fc53569">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$/src" remote-root="/var/www/html " />
+            </list>
+          </settings>
+        </remote-mappings>
+        <remote-mappings server-id="php@cb2ca86e-00f4-4fff-8e3f-c8e697a90ec1">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$/src" remote-root="/var/www/html" />
+            </list>
+          </settings>
+        </remote-mappings>
+        <remote-mappings server-id="php@0710983b-cbc1-4e13-954c-67f6f56e9d14">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$/src" remote-root="/var/www/html" />
+            </list>
+          </settings>
+        </remote-mappings>
+      </list>
+    </list>
+  </component>
+</project>

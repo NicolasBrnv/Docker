@@ -27,6 +27,7 @@ class VHome
             phpinfo();
         } catch (PDOException $e) {
             print " Erreur !: " . $e->getMessage() . "<br/>";
+            phpinfo();
             die();
         }
     }
