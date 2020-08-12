@@ -21,7 +21,10 @@ class AppConfiguration
                 case 'C' : include_once 'Controllers/'. $class . '.cont.php';
                 break;
 
-                case 'I' : include_once 'Controllers/Interfaces/'. $class . '.int.php';
+                case 'D' : include_once 'Database/'. $class . '.db.php';
+                break;
+
+                case 'I' : include_once 'Interfaces/'. $class . '.int.php';
                 break;
 
                 case 'M' : include_once 'Models/'. $class . '.model.php';

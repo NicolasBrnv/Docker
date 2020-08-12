@@ -1,22 +1,22 @@
 <?php
 
 
-class VDatas implements IDatas
+class MDatas implements IDatas
 {
-    public function __construct()
+    private $db;
+
+    public function __construct(IDb $db)
     {
+        $this->db = $db;
     }
 
     public function __destruct()
     {
-        // TODO: Implement __destruct() method.
     }
 
-    public function showDatas($_dataId){
-
-        echo $_dataId;
-
-        var_dump($_dataId);
+    public function getDb()
+    {
+        return $this->db;
     }
 
     /**
@@ -24,7 +24,10 @@ class VDatas implements IDatas
      */
     public function select()
     {
-
+        $conn = $this->db->getDb();
+        $query = $conn->prepare("SELECT * FROM datas_test");
+        $query->execute();
+        return $query->fetch();
     }
 
     /**

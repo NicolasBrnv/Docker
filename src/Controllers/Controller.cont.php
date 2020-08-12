@@ -5,9 +5,6 @@ class Controller implements IAppDatas
 {
     private $ex;
     private $layout;
-    /**
-     * @var mixed|string
-     */
     private $post;
 
     public function __construct()
@@ -16,7 +13,6 @@ class Controller implements IAppDatas
 
     public function __destruct()
     {
-        // TODO: Implement __destruct() method.
     }
 
     /**
@@ -32,18 +28,11 @@ class Controller implements IAppDatas
      */
     public function getDatasPost()
     {
-        return $this->post;
-    }
+        if (isset($_POST)){
+            return $this->post;
+        }
 
-//    public function setEx()
-//    {
-//        $this->ex = isset($_GET['ex']) ? $_GET['ex'] : 'home';
-//    }
-//
-//    public function getEx()
-//    {
-//        return $this->ex;
-//    }
+    }
 
     public function getLayout()
     {
@@ -76,12 +65,18 @@ class Controller implements IAppDatas
 
     public function home()
     {
+        $db = new DBase('root', 'root', 'test');
+        $datas = new MDatas($db);
+
+        $arg = $datas->select();
+        var_dump($arg);
+
         global $content;
 
         $content['title'] = 'Accueil';
         $content['class'] = 'VHome';
-        $content['method'] = 'showAcceuil';
-        $content['arg'] = '';
+        $content['method'] = 'showHome';
+        $content['arg'] = $arg;
     }
 
     public function data1()

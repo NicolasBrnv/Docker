@@ -5,9 +5,11 @@ services:
       context: .
       dockerfile: Dockerfile
 
+    volumes:
+    - ./src/:/var/www/html
+
     environment:
-      # Keep attention to that env variable
-      PHP_IDE_CONFIG: serverName=test-app
+      - XDEBUG_CONFIG=remote_host=host.docker.internal
 
     ports:
         - "80:80"

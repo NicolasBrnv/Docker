@@ -1,6 +1,6 @@
 <?php
 
-class VHome
+class VHome implements IHome
 {
     public function __construct()
     {
@@ -11,25 +11,28 @@ class VHome
         // TODO: Implement __destruct() method.
     }
 
-    public function showAcceuil()
+    public function showHome($arg)
     {
         echo 'Page d\'accueil';
+        echo '<p>' . $arg['data_title'] . '</p>';
+        echo '<p>' . $arg['data_content'] . '</p>';
 
-        try {
-            $dsn = 'mysql:host=db;dbname=test';
-            $username = 'root';
-            $password = 'root';
-
-            $dbh = new PDO($dsn, $username, $password);
-
-            echo "<h3>La connexion a été établi !</h3>";
-
-            phpinfo();
-        } catch (PDOException $e) {
-            print " Erreur !: " . $e->getMessage() . "<br/>";
-            phpinfo();
-            die();
-        }
+        //A supprimer à la fin des modifications
+//        try {
+//            $dsn = 'mysql:host=db;dbname=test';
+//            $username = 'root';
+//            $password = 'root';
+//
+//            new PDO($dsn, $username, $password);
+//
+//            echo "<h3>La connexion a été établi !</h3>";
+//
+//            phpinfo();
+//        } catch (PDOException $e) {
+//            print " Erreur !: " . $e->getMessage() . "<br/>";
+//            phpinfo();
+//            die();
+//        }
     }
 
 }
