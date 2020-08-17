@@ -22,6 +22,8 @@ class VHome implements IHome
             echo '<p>' . $arg->body . '</p>';
         }
 
+        phpinfo();
+
         //A supprimer à la fin des modifications
 //        try {
 //            $dsn = 'mysql:host=db;dbname=test';
