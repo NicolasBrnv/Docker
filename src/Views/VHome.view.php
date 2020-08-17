@@ -14,8 +14,13 @@ class VHome implements IHome
     public function showHome($arg)
     {
         echo 'Page d\'accueil';
-        echo '<p>' . $arg['data_title'] . '</p>';
-        echo '<p>' . $arg['data_content'] . '</p>';
+
+        if (!$arg){
+            echo '<p>Pas de donnée</p>';
+        }else{
+            echo '<p>' . $arg->title . '</p>';
+            echo '<p>' . $arg->body . '</p>';
+        }
 
         //A supprimer à la fin des modifications
 //        try {

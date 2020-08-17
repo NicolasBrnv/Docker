@@ -25,9 +25,9 @@ class MDatas implements IDatas
     public function select()
     {
         $conn = $this->db->getDb();
-        $query = $conn->prepare("SELECT * FROM datas_test");
+        $query = $conn->prepare("SELECT * FROM datas");
         $query->execute();
-        return $query->fetch();
+        return $query->fetch(PDO::FETCH_OBJ );
     }
 
     /**
