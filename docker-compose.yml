@@ -19,7 +19,6 @@ services:
     networks:
       - backend
 
-
   db:
     image: mysql
     volumes:

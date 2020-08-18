@@ -2,8 +2,8 @@
 
 interface IDatas {
 
-    public function select();
-    public function add();
-    public function edit();
+    public function select($opt, $id);
+    public function add($data);
+    public function update($data);
     public function delete();
 }

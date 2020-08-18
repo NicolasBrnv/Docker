@@ -15,6 +15,7 @@ $vcontent = new $content['class']();
     <a href="index.php?ex=home">Accueil</a>
     <a href="index.php?ex=data-1">Data 1</a>
     <a href="index.php?ex=data-2">Data 2</a>
+    <a href="index.php?ex=formulaire">Formulaire</a>
 </header>
 
 <div id="content">

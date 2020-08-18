@@ -20,30 +20,63 @@ class MDatas implements IDatas
     }
 
     /**
+     * @param $opt
+     * @param $id
      * @return mixed
      */
-    public function select()
+    public function select($opt, $id = null)
     {
+        if ($opt = 'all'){
+            $conn = $this->db->getDb();
+            $query = $conn->prepare("SELECT * FROM datas");
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_OBJ);
+        }else{
+            $conn = $this->db->getDb();
+            $query = $conn->prepare("SELECT * FROM datas WHERE datas.id = :id");
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_OBJ);
+        }
+
+        switch ($opt){
+            case 'all':
+                $conn = $this->db->getDb();
+                $query = $conn->prepare("SELECT * FROM datas");
+                $query->execute();
+                return $query->fetchAll(PDO::FETCH_OBJ);
+                break;
+            case 
+        }
+
+    }
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function add($data)
+    {
+        $title = $data['title'];
+        $body = $data['body'];
         $conn = $this->db->getDb();
-        $query = $conn->prepare("SELECT * FROM datas");
+        $query = $conn->prepare("INSERT INTO datas (title, body) VALUES (:title, :body)");
+        $query->bindParam(':title', $title);
+        $query->bindParam(':body', $body);
         $query->execute();
-        return $query->fetch(PDO::FETCH_OBJ );
     }
 
     /**
      * @return mixed
      */
-    public function add()
+    public function update($data)
     {
-        // TODO: Implement add() method.
-    }
-
-    /**
-     * @return mixed
-     */
-    public function edit()
-    {
-        // TODO: Implement edit() method.
+        $title = $data['title'];
+        $body = $data['body'];
+        $conn = $this->db->getDb();
+        $query = $conn->prepare("UPDATE datas SET title = :title, body = :body WHERE datas.id = :id");
+        $query->bindParam(':title', $title);
+        $query->bindParam(':body', $body);
+        $query->execute();
     }
 
     /**

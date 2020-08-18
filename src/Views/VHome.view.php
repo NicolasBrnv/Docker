@@ -18,28 +18,14 @@ class VHome implements IHome
         if (!$arg){
             echo '<p>Pas de donnée</p>';
         }else{
-            echo '<p>' . $arg->title . '</p>';
-            echo '<p>' . $arg->body . '</p>';
+            foreach ($arg as $v){
+                echo '<p>' . $v->title . '</p>';
+                echo '<p>' . $v->body . '</p>';
+            }
         }
 
         phpinfo();
 
-        //A supprimer à la fin des modifications
-//        try {
-//            $dsn = 'mysql:host=db;dbname=test';
-//            $username = 'root';
-//            $password = 'root';
-//
-//            new PDO($dsn, $username, $password);
-//
-//            echo "<h3>La connexion a été établi !</h3>";
-//
-//            phpinfo();
-//        } catch (PDOException $e) {
-//            print " Erreur !: " . $e->getMessage() . "<br/>";
-//            phpinfo();
-//            die();
-//        }
     }
 
 }
