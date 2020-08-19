@@ -115,6 +115,13 @@ class Controller implements IAppDatas
                 $db = new DBase('root', 'root', 'test');
                 $datas = new MDatas($db);
                 $arg['datas'] = $datas->select('all');
+
+                if (isset($_GET['data_id'])) {
+                    $arg['data_selected'] = $datas->select('one', $_GET['data_id']);
+
+                } else {
+                    $arg['data_selected'] = $datas->select('one');
+                }
 //                $arg['option'] = $_GET['option'];
                 break;
 
@@ -135,42 +142,33 @@ class Controller implements IAppDatas
 
     public function modify()
     {
-        if (isset($_GET['option']) == 'insert'){
-            if (isset($_POST['datas_title']) && isset($_POST['datas_body'])){
-                $data['title'] = $_POST['datas_title'];
-                $data['body'] = $_POST['datas_body'];
-                $db = new DBase('root', 'root', 'test');
-                $dataset = new MDatas($db);
-                $dataset->add($data);
-                $this->formulary();
-            }
-        }else{
-            $db = new DBase('root', 'root', 'test');
-            $data = new MDatas($db);
-            $data->update();
-            $this->formulary();
-        }
 
-//        switch (isset($_GET['option'])){
-//
-//            case $_GET['option'] = 'update':
-//                $db = new DBase('root', 'root', 'test');
-//                $data = new MDatas($db);
-//                $data->update();
-//                $this->formulary();
-//                break;
-//
-//            case $_GET['option'] = 'insert':
-//                if (isset($_POST['datas_title']) && isset($_POST['datas_body'])){
-//                    $data['title'] = $_POST['datas_title'];
-//                    $data['body'] = $_POST['datas_body'];
-//                    $db = new DBase('root', 'root', 'test');
-//                    $dataset = new MDatas($db);
-//                    $dataset->add($data);
-//                    $this->formulary();
-//                }
-//                break;
-//        }
+        switch (isset($_GET['option'])){
+            case $_GET['option'] = 'update':
+                if (isset($_POST['datas_title']) && isset($_POST['datas_body'])){
+                    $db = new DBase('root', 'root', 'test');
+                    $data = new MDatas($db);
+                    $data->update($_POST['datas_title'], $_POST['datas_body'], $_POST['datas_id']);
+                    $this->formulary();
+                }
+                break;
+
+            case $_GET['option'] = 'insert':
+                if (isset($_POST['datas_title']) && isset($_POST['datas_body'])){
+                    $data['title'] = $_POST['datas_title'];
+                    $data['body'] = $_POST['datas_body'];
+                    $db = new DBase('root', 'root', 'test');
+                    $data = new MDatas($db);
+                    $data->add($data);
+                    $this->formulary();
+                }
+                break;
+
+            case $_GET['option'] = 'delete':
+                var_dump($_GET);
+                die();
+                break;
+        }
     }
 
 } //Controller

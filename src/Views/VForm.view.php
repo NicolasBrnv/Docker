@@ -27,18 +27,19 @@ class VForm
 
         switch ($option) {
             case 'update':
-                if (isset($_GET['data_id'])){
-                    $id = $_GET['data_id'];
-                    $title = $arg['datas'][0]->title;
-                    $body = $arg['datas'][0]->body;
-                }else{
-
-                }
+//                if (isset($_GET['data_id'])){
+//                    $id = $_GET['data_id'];
+//                    $title = $arg['datas'][0]->title;
+//                    $body = $arg['datas'][0]->body;
+//                }else{
+//
+//                }
                 $arg['option'] = $option;
                 $type = $arg['option'];
                 $label = ucfirst($type);
-                $title = $arg['datas'][0]->title;
-                $body = $arg['datas'][0]->body;
+                $id = $arg['data_selected']->id;
+                $title = $arg['data_selected']->title;
+                $body = $arg['data_selected']->body;
                 $listData = $arg['datas'];
                 $placeholder = 'Mettez à jour des données';
                 $hidden = "<input type='hidden' name='datas_id' value='$id'>";
@@ -82,7 +83,8 @@ HERE;
         if ($listData) {
             echo "<section>";
             foreach ($listData as $v) {
-                echo "<a href='index.php?ex=formulaire&amp;data_id=$v->id'><h4>$v->title</h4><p>$v->body</p> </a>";
+                echo "<a href='index.php?ex=formulaire&amp;option=update&amp;data_id=$v->id'><h4>$v->title</h4><p>$v->body</p></a>";
+                echo "<h4><a href='index.php?ex=modify&amp;option=delete&amp;data_id=$v->id'>Delete</a></h4>";
             }
             echo "</section>";
         }
