@@ -15,7 +15,6 @@ class VForm
     public function showForm($arg)
     {
         $type = false;
-//        $value = false;
         $placeholder = false;
         $label = false;
         $title = false;
@@ -27,13 +26,6 @@ class VForm
 
         switch ($option) {
             case 'update':
-//                if (isset($_GET['data_id'])){
-//                    $id = $_GET['data_id'];
-//                    $title = $arg['datas'][0]->title;
-//                    $body = $arg['datas'][0]->body;
-//                }else{
-//
-//                }
                 $arg['option'] = $option;
                 $type = $arg['option'];
                 $label = ucfirst($type);
@@ -84,7 +76,7 @@ HERE;
             echo "<section>";
             foreach ($listData as $v) {
                 echo "<a href='index.php?ex=formulaire&amp;option=update&amp;data_id=$v->id'><h4>$v->title</h4><p>$v->body</p></a>";
-                echo "<h4><a href='index.php?ex=modify&amp;option=delete&amp;data_id=$v->id'>Delete</a></h4>";
+                echo "<a href='index.php?ex=modify&amp;option=delete&amp;data_id=$v->id'>Delete</a>";
             }
             echo "</section>";
         }
