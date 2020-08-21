@@ -16,6 +16,7 @@ $vcontent = new $content['class']();
     <a href="index.php?ex=data-1">Data 1</a>
     <a href="index.php?ex=data-2">Data 2</a>
     <a href="index.php?ex=formulaire">Formulaire</a>
+    <a href="index.php?ex=formulaire&amp;form_type=1">Formulaire Cv</a>
 </header>
 
 <div id="content">

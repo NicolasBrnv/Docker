@@ -109,17 +109,53 @@ class Controller implements IAppDatas
     {
         $arg = false;
 
+        if (isset($_GET['form_type'])){
+            switch (isset($_GET['option'])){
+                case 'update':
+                    $db = new DBase('root', 'root', 'test');
+                    $dataset = new MDatas($db);
+                    $arg['cv'] = $dataset->select('all', 0, 'cv');
+
+                    if (isset($_GET['cv_id'])) {
+                        $arg['cv_selected'] = $dataset->select('one', $_GET['cv_id'], 'cv');
+
+                    } else {
+                        $arg['cv_selected'] = $dataset->select('one', 0, 'cv');
+                    }
+                    break;
+
+                case 'insert':
+                    $arg['cv'] = null;
+                    $arg['option'] = $_GET['option'];
+                    break;
+
+                default:
+                    $db = new DBase('root', 'root', 'test');
+                    $dataset = new MDatas($db);
+                    $arg['cv'] = $dataset->select('all', 0, 'cv');
+                    break;
+            }
+            global $content;
+
+            $content['title'] = 'Formulaire';
+            $content['class'] = 'VForm';
+            $content['method'] = 'showFormCv';
+            $content['arg'] = $arg;
+
+            return;
+        }
+
         switch (isset($_GET['option'])){
             case 'update':
                 $db = new DBase('root', 'root', 'test');
                 $dataset = new MDatas($db);
-                $arg['datas'] = $dataset->select('all');
+                $arg['datas'] = $dataset->select('all',0 , 'datas' );
 
                 if (isset($_GET['data_id'])) {
-                    $arg['data_selected'] = $dataset->select('one', $_GET['data_id']);
+                    $arg['data_selected'] = $dataset->select('one', $_GET['data_id'], 'datas');
 
                 } else {
-                    $arg['data_selected'] = $dataset->select('one');
+                    $arg['data_selected'] = $dataset->select('one', 0, 'datas');
                 }
                 break;
 
@@ -155,7 +191,7 @@ class Controller implements IAppDatas
                     $dataset['body'] = $_POST['datas_body'];
                     $db = new DBase('root', 'root', 'test');
                     $data = new MDatas($db);
-                    $data->add($dataset);
+                    $data->add('datas', $dataset);
                     $this->formulary();
                 }
                 break;

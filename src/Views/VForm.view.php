@@ -42,7 +42,6 @@ class VForm
                 $type = $arg['option'];
                 $label = ucfirst($type);
                 $listData = null;
-                $value = null;
                 $placeholder = 'Ajouter des données';
                 break;
 
@@ -80,4 +79,51 @@ HERE;
         }
 
     } //showForm($arg)
+
+    public function showFormCv($arg){
+
+        var_dump($arg);
+
+        echo <<<HERE
+<section>
+    <form action="index.php?ex=modify&amp;option=insert" method="post">
+    
+        <div>
+        <label for="point_fort" >Points Forts</label>
+        <textarea id="point_fort" name="point_fort" maxlength='50' maxsize='50' placeholder="Tapez du contenu !"></textarea>
+        </div>
+        
+        <div>
+        <label for="comp_funct" >Compétences Fonctionnelles</label>
+        <textarea id="comp_funct" name="comp_funct" maxlength='50' maxsize='50' placeholder="Tapez du contenu !"></textarea>
+        </div>
+        
+        <div>
+        <label for="comp_tech" >Compétences Techniques</label>
+        <textarea id="comp_tech" name="comp_tech" maxlength='50' maxsize='50' placeholder="Tapez du contenu !"></textarea>
+        </div>
+        
+        <div>
+        <label for="lang" >Langues</label>
+        <textarea id="lang" name="lang" maxlength='50' maxsize='50' placeholder="Tapez du contenu !"></textarea>
+        </div>
+        
+        <div>
+        <label for="formation" >Langues</label>
+        <textarea id="formation" name="formation" maxlength='50' maxsize='50' placeholder="Tapez du contenu !"></textarea>
+        </div>
+        
+    </form>
+</section>
+HERE;
+        echo "<section>";
+        foreach ($arg['cv'] as $cv) {
+            echo "<a href=''>$cv->point_fort</a><br>";
+            echo "<a href=''>$cv->competence_fonct</a><br>";
+            echo "<a href=''>$cv->competence_tech</a><br>";
+            echo "<a href=''>$cv->langue</a><br>";
+            echo "<a href=''>$cv->formation</a><br>";
+        }
+        echo "</section>";
+    } //showFormCv()
 } //VForm
