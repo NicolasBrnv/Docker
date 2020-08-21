@@ -3,7 +3,7 @@
 
 class MDatas implements IDatas
 {
-    private $db;
+    private IDb $db;
 
     public function __construct(IDb $db)
     {
@@ -48,8 +48,7 @@ class MDatas implements IDatas
                 $query->execute();
                 return $query->fetch(PDO::FETCH_OBJ);
         }
-
-    }
+    } //select($opt, $id = null)
 
     /**
      * @param $data
@@ -64,11 +63,12 @@ class MDatas implements IDatas
         $query->bindParam(':title', $title);
         $query->bindParam(':body', $body);
         $query->execute();
-    }
+    } //add($data)
 
     /**
      * @param $dataTitle
      * @param $dataBody
+     * @param $dataId
      * @return mixed
      */
     public function update($dataTitle, $dataBody, $dataId)
@@ -82,7 +82,7 @@ class MDatas implements IDatas
         $query->bindParam(':title', $title);
         $query->bindParam(':body', $body);
         $query->execute();
-    }
+    } //update($dataTitle, $dataBody, $dataId)
 
     /**
      * @param $id
@@ -94,5 +94,5 @@ class MDatas implements IDatas
         $query = $conn->prepare("DELETE FROM datas WHERE id = :id");
         $query->bindParam(':id', $id);
         $query->execute();
-    }
+    } //delete($id)
 }

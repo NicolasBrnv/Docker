@@ -34,7 +34,7 @@ class VForm
                 $body = $arg['data_selected']->body;
                 $listData = $arg['datas'];
                 $placeholder = 'Mettez à jour des données';
-                $hidden = "<input type='hidden' name='datas_id' value='$id'>";
+                $hidden = "<input type='hidden' name='datas_id' value='$id'/>";
                 break;
 
             case 'insert':
@@ -62,9 +62,7 @@ class VForm
             <label for='$type'>$label body:</label>
             <textarea id='$type' name='datas_body' value='' type='text' maxlength='50' maxsize='50' placeholder='$placeholder' required>$body</textarea>
         </div>
-        
         $hidden
-        
         <button type='submit'>submit</button>    
     </form>
     <a href='index.php?ex=formulaire&amp;option=insert'>Ajouter des données</a>
@@ -81,6 +79,5 @@ HERE;
             echo "</section>";
         }
 
-    }
-
+    } //showForm($arg)
 } //VForm

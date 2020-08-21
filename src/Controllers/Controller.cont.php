@@ -21,7 +21,7 @@ class Controller implements IAppDatas
     public function getDatasGet()
     {
         return $this->ex = isset($_GET['ex']) ? $_GET['ex'] : 'home';
-    }
+    } //getDatasGet()
 
     /**
      * @return mixed
@@ -31,14 +31,13 @@ class Controller implements IAppDatas
         if (isset($_POST)){
             return $this->post;
         }
-
-    }
+    } //getDatasPost()
 
     public function getLayout()
     {
         $this->layout = require 'Views/layout.view.php';
         return $this->layout;
-    }
+    } //getLayout()
 
     public function control()
     {
@@ -69,7 +68,7 @@ class Controller implements IAppDatas
         }
 
         $this->getLayout();
-    }
+    } //control()
 
     public function home()
     {
@@ -84,7 +83,7 @@ class Controller implements IAppDatas
         $content['class'] = 'VHome';
         $content['method'] = 'showHome';
         $content['arg'] = $arg;
-    }
+    } //home
 
     public function data1()
     {
@@ -136,8 +135,7 @@ class Controller implements IAppDatas
         $content['class'] = 'VForm';
         $content['method'] = 'showForm';
         $content['arg'] = $arg;
-    }
-
+    } //formulary()
 
     public function modify()
     {
@@ -171,6 +169,5 @@ class Controller implements IAppDatas
                 }
                 break;
         }
-    }
-
+    } //modify()
 } //Controller
