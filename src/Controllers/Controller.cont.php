@@ -75,7 +75,7 @@ class Controller implements IAppDatas
         $db = new DBase('root', 'root', 'test');
         $dataset = new MDatas($db);
 
-        $arg = $dataset->select('all');
+        $arg = $dataset->select('all', 0, 'datas');
 
         global $content;
 
