@@ -1,8 +1,9 @@
 <?php
 
+namespace Config;
+
 class AppConfiguration
 {
-
     public function __construct()
     {
     }

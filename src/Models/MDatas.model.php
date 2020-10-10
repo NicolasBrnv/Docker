@@ -76,7 +76,7 @@ class MDatas implements IDatas
      * @param $dataId
      * @return mixed
      */
-    public function update($dataTitle, $dataBody, $dataId)
+    public function update($dataTitle, $dataId)
     {
         $id = $dataId;
         $title = $dataTitle;

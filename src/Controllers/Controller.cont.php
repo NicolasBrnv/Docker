@@ -107,6 +107,11 @@ class Controller implements IAppDatas
 
     public function formulary()
     {
+        /**
+         * TO DO :
+         * supprimer la table 'datas' , utiliser la table 'cv',
+         * modifier le controller formulary() & modify() afin d'utiliser le fomulaire cv
+         */
         $arg = false;
 
         if (isset($_GET['form_type'])){
@@ -180,7 +185,7 @@ class Controller implements IAppDatas
                 if (isset($_POST['datas_title']) && isset($_POST['datas_body'])){
                     $db = new DBase('root', 'root', 'test');
                     $dataset = new MDatas($db);
-                    $dataset->update($_POST['datas_title'], $_POST['datas_body'], $_POST['datas_id']);
+                    $dataset->update($_POST['datas_title'], $_POST['datas_id']);
                     $this->formulary();
                 }
                 break;
