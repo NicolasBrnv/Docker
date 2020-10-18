@@ -18,26 +18,12 @@ class Controller implements IAppDatas
     /**
      * @return mixed
      */
-    public function getDatasGet()
-    {
-        return $this->ex = isset($_GET['ex']) ? $_GET['ex'] : 'home';
-    } //getDatasGet()
-
-    /**
-     * @return mixed
-     */
     public function getDatasPost()
     {
-        if (isset($_POST)){
+        if (isset($_POST)) {
             return $this->post;
         }
-    } //getDatasPost()
-
-    public function getLayout()
-    {
-        $this->layout = require 'Views/layout.view.php';
-        return $this->layout;
-    } //getLayout()
+    } //getDatasGet()
 
     public function control()
     {
@@ -68,7 +54,15 @@ class Controller implements IAppDatas
         }
 
         $this->getLayout();
-    } //control()
+    } //getDatasPost()
+
+    /**
+     * @return mixed
+     */
+    public function getDatasGet()
+    {
+        return $this->ex = isset($_GET['ex']) ? $_GET['ex'] : 'home';
+    } //getLayout()
 
     public function home()
     {
@@ -83,7 +77,7 @@ class Controller implements IAppDatas
         $content['class'] = 'VHome';
         $content['method'] = 'showHome';
         $content['arg'] = $arg;
-    } //home
+    } //control()
 
     public function data1()
     {
@@ -93,7 +87,7 @@ class Controller implements IAppDatas
         $content['class'] = 'VDatas';
         $content['method'] = 'showDatas';
         $content['arg'] = '1';
-    }
+    } //home
 
     public function data2()
     {
@@ -114,8 +108,8 @@ class Controller implements IAppDatas
          */
         $arg = false;
 
-        if (isset($_GET['form_type'])){
-            switch (isset($_GET['option'])){
+        if (isset($_GET['form_type'])) {
+            switch (isset($_GET['option'])) {
                 case 'update':
                     $db = new DBase('root', 'root', 'test');
                     $dataset = new MDatas($db);
@@ -150,11 +144,11 @@ class Controller implements IAppDatas
             return;
         }
 
-        switch (isset($_GET['option'])){
+        switch (isset($_GET['option'])) {
             case 'update':
                 $db = new DBase('root', 'root', 'test');
                 $dataset = new MDatas($db);
-                $arg['datas'] = $dataset->select('all',0 , 'datas' );
+                $arg['datas'] = $dataset->select('all', 0, 'datas');
 
                 if (isset($_GET['data_id'])) {
                     $arg['data_selected'] = $dataset->select('one', $_GET['data_id'], 'datas');
@@ -176,13 +170,13 @@ class Controller implements IAppDatas
         $content['class'] = 'VForm';
         $content['method'] = 'showForm';
         $content['arg'] = $arg;
-    } //formulary()
+    }
 
     public function modify()
     {
-        switch (isset($_GET['option'])){
+        switch (isset($_GET['option'])) {
             case $_GET['option'] == 'update':
-                if (isset($_POST['datas_title']) && isset($_POST['datas_body'])){
+                if (isset($_POST['datas_title']) && isset($_POST['datas_body'])) {
                     $db = new DBase('root', 'root', 'test');
                     $dataset = new MDatas($db);
                     $dataset->update($_POST['datas_title'], $_POST['datas_id']);
@@ -191,7 +185,7 @@ class Controller implements IAppDatas
                 break;
 
             case $_GET['option'] == 'insert':
-                if (isset($_POST['datas_title']) && isset($_POST['datas_body'])){
+                if (isset($_POST['datas_title']) && isset($_POST['datas_body'])) {
                     $dataset['title'] = $_POST['datas_title'];
                     $dataset['body'] = $_POST['datas_body'];
                     $db = new DBase('root', 'root', 'test');
@@ -202,7 +196,7 @@ class Controller implements IAppDatas
                 break;
 
             case $_GET['option'] == 'delete':
-                if (isset($_GET['data_id'])){
+                if (isset($_GET['data_id'])) {
                     $db = new DBase('root', 'root', 'test');
                     $dataset = new MDatas($db);
                     $dataset->delete($_GET['data_id']);
@@ -210,5 +204,12 @@ class Controller implements IAppDatas
                 }
                 break;
         }
+    } //formulary()
+
+    public function getLayout()
+    {
+        $this->layout = require 'Views/layout.view.php';
+        return $this->layout;
     } //modify()
+
 } //Controller

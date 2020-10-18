@@ -1,6 +1,6 @@
 <?php
 //Inclusion de l'autoload.
-require 'Config/Ini.inc.php';
+include 'Config/Ini.inc.php';
 //Controller
 $controller = new Controller();
 

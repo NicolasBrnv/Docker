@@ -1,8 +1,7 @@
 <?php
 
-use Config\AppConfiguration;
-
-require_once 'AppConfiguration.config.php';
-//Chargement de la méthode de configuration des classes
-
+/**
+ * Chargement de la méthode de configuration des classes
+ */
+include_once 'AppConfiguration.config.php';
 AppConfiguration::GetAppConfig();

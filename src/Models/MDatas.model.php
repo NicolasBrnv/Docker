@@ -80,7 +80,7 @@ class MDatas implements IDatas
     {
         $id = $dataId;
         $title = $dataTitle;
-        $body = $dataBody;
+        $body = false;
         $conn = $this->db->getDb();
         $query = $conn->prepare("UPDATE datas SET title = :title, body = :body WHERE datas.id = :id");
         $query->bindParam(':id', $id);
